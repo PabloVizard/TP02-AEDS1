@@ -4,7 +4,7 @@
 
 int main() {
 
-  
+  int numeroCidades;
 
   return 0;
 }
