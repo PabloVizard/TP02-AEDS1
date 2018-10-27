@@ -14,12 +14,11 @@ int main(){
   int MatrizCidades[NumeroCidades][NumeroCidades];
   //Vetores para armazenar as matrículas
   int mat1[4] = {0,0,0,0}, mat2[4] = {0,0,0,0}, mat3[4] = {0,0,0,0};
-  /*
-  Variável para armazenar o ponto de partida e volta do Caixeiro Viajante.
-  Nela, está setada a função para calcular a soma das matrículas dos participantes.
-  */
-  int pontoPartida = Permutacao_SomaMatricula(mat1, mat2, mat3);
-
+  //Variável para armazenar o ponto de partida e volta do Caixeiro Viajante.
+  int pontoPartida;
+  
+  //Nela, está setada a função para calcular a soma das matrículas dos participantes.
+  pontoPartida = Permutacao_SomaMatricula(mat1, mat2, mat3);
   printf("Número de cidades: ");
   scanf("%d", &NumeroCidades);
 
@@ -31,7 +30,7 @@ int main(){
   Matriz_Imprimir(MatrizCidades);
 
   //Definindo a permutação.
-  Permutacao_Iniciar(NumeroCidades-1);
+  Permutacao_Iniciar(NumeroCidades);
   TempoExecucao_MedirTempo();
 
   return 0;
