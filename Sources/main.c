@@ -13,7 +13,7 @@ int main(){
 
   int MatrizCidades[NumeroCidades][NumeroCidades];
 
-  Matriz_Iniciar(NumeroCidades);
+  Matriz_Iniciar(NumeroCidades, MatrizCidades);
   Matriz_Imprimir(MatrizCidades);
 
   Permutacao_Iniciar();
