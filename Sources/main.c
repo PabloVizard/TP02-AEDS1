@@ -8,14 +8,13 @@
 
 int main(){
 
-  int NumeroCidades;
   printf("Digite o número de cidades: ");
   scanf("%d", &NumeroCidades);
 
   int MatrizCidades[NumeroCidades][NumeroCidades];
 
   Matriz_Iniciar(NumeroCidades);
-  Matriz_Imprimir(**MatrizCidades, NumeroCidades);
+  Matriz_Imprimir(MatrizCidades);
 
   Permutacao_Iniciar();
   TempoExecucao_MedirTempo();
