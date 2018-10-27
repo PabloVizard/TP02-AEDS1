@@ -16,7 +16,7 @@ int main(){
   Matriz_Iniciar(NumeroCidades, MatrizCidades);
   Matriz_Imprimir(MatrizCidades);
 
-  Permutacao_Iniciar();
+  Permutacao_Iniciar(NumeroCidades);
   TempoExecucao_MedirTempo();
 
   return 0;

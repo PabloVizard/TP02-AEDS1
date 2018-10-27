@@ -2,9 +2,15 @@
 #include <stdlib.h>
 #include "../Libs/Permutacao.h"
 
-void Permutacao_Iniciar()
+void Permutacao_Iniciar(int NumeroCidades)
 {
-	int v[] = {1, 2, 3, 4};
+	int i, cont = 0;
+	int v[NumeroCidades];
+	for(i = 0; i < NumeroCidades; i++)
+	{
+		v[i] = cont;
+		cont ++;
+	}
 	int tam_v = sizeof(v) / sizeof(int);
   Permutacao_Permuta(v, 0, tam_v - 1);
 
