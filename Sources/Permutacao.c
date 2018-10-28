@@ -13,7 +13,6 @@ void Permutacao_Iniciar(int NumeroCidades, int pPartida,int MatrizCidades[Numero
 		}
 			v[i] = cont;
 			cont ++;
-
 	}
 	int tam_v = sizeof(v) / sizeof(int);
   Permutacao_Permuta(v, 0, tam_v - 1, pPartida, MatrizCidades);
@@ -28,18 +27,23 @@ void Permutacao_Troca(int vetor[], int i, int j)
 }
 
 void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizCidades[NumeroCidades][NumeroCidades])
-{	int soma = 0, i = 0;
+{
+	int soma = 0, i = 0, menor = 999999999;
 	if(inf == sup)
+
 	{ soma+=MatrizCidades[pPartida][vetor[0]];
 		soma+=MatrizCidades[vetor[sup]][pPartida];
 		for(i = 0; i <= sup; i++){
 			if(i>0){
 	  		soma +=MatrizCidades[vetor[i-1]][vetor[i]];
 			}
-			printf("%d ", vetor[i]);
+			printf("%d ", vetor[i]+1);
 		}
+
 		printf("\n");
+
 		printf("soma = %d\n", soma);
+		//printf("menor = %d\n", menor);
 	}
 	else
 	{
