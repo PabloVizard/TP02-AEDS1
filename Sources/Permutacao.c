@@ -2,17 +2,21 @@
 #include <stdlib.h>
 #include "../Libs/Permutacao.h"
 
-void Permutacao_Iniciar(int NumeroCidades)
+void Permutacao_Iniciar(int NumeroCidades, int pPartida,int MatrizCidades[NumeroCidades][NumeroCidades])
 {
 	int i, cont = 0;
-	int v[NumeroCidades];
-	for(i = 0; i < NumeroCidades; i++)
+	int v[NumeroCidades-1];
+	for(i = 0; i < NumeroCidades-1; i++)
 	{
-		v[i] = cont;
-		cont ++;
+		if(i ==pPartida){
+			cont ++;
+		}
+			v[i] = cont;
+			cont ++;
+
 	}
 	int tam_v = sizeof(v) / sizeof(int);
-  Permutacao_Permuta(v, 0, tam_v - 1);
+  Permutacao_Permuta(v, 0, tam_v - 1, pPartida, MatrizCidades);
 
 }
 
@@ -23,20 +27,26 @@ void Permutacao_Troca(int vetor[], int i, int j)
 	vetor[j] = aux;
 }
 
-void Permutacao_Permuta(int vetor[], int inf, int sup)
-{
+void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizCidades[NumeroCidades][NumeroCidades])
+{	int soma = 0, i = 0;
 	if(inf == sup)
-	{
-		for(int i = 0; i <= sup; i++)
+	{ soma+=MatrizCidades[pPartida][vetor[0]];
+		soma+=MatrizCidades[vetor[sup]][pPartida];
+		for(i = 0; i <= sup; i++){
+			if(i>0){
+	  		soma +=MatrizCidades[vetor[i-1]][vetor[i]];
+			}
 			printf("%d ", vetor[i]);
+		}
 		printf("\n");
+		printf("soma = %d\n", soma);
 	}
 	else
 	{
 		for(int i = inf; i <= sup; i++)
 		{
 			Permutacao_Troca(vetor, inf, i);
-			Permutacao_Permuta(vetor, inf + 1, sup);
+			Permutacao_Permuta(vetor, inf + 1, sup, pPartida, MatrizCidades);
 			Permutacao_Troca(vetor, inf, i); // backtracking
 		}
 	}
