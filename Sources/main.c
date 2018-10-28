@@ -23,24 +23,29 @@ int main(){
 
   //Nela, está setada a função para calcular a soma das matrículas dos participantes.
   pontoPartida = Permutacao_SomaMatricula(mat1, mat2, mat3);
-  printf("Número de cidades: ");
+  printf("Numero de cidades:  ");
   scanf("%d", &NumeroCidades);
+  printf("\n==================================================\n");
+  printf("Quantidade de Cidades %d", NumeroCidades);
+  printf("\n==================================================\n");
+
   int MatrizCidades[NumeroCidades][NumeroCidades];
+
   //Definindo o ponto de partida pelo resto de divisão da soma pelo número de cidades.
-
   pontoPartida = (pontoPartida%NumeroCidades);
-  printf("Ponto de partida: %d\n", pontoPartida+1);
-  //Iniciando e imprimindo a matriz
+  printf("\n==================================================\n");
+  printf("Cidade Inicial %d", pontoPartida+1);
+  printf("\n==================================================\n");
+  //Iniciando a matriz
   Matriz_Iniciar(NumeroCidades, MatrizCidades);
-
-  Matriz_Imprimir(MatrizCidades);
-
+  printf("\n");
   //Definindo a permutação.
   Permutacao_Iniciar(NumeroCidades, pontoPartida, MatrizCidades);
-	//TempoExecucao_MedirTempo();
+  //imprimindo a matriz
+  Matriz_Imprimir(MatrizCidades);
 
-  printf("\n==================================================\n\n");
-  printf(">>>>>>>>>> Tempo de Execução:%f <<<<<<<<<<\n",(clock() - tempo) / (double)CLOCKS_PER_SEC);
+  printf("==================================================\n");
+  printf(">>>>>>>>>> Tempo de Execução:%f <<<<<<<<<<",(clock() - tempo) / (double)CLOCKS_PER_SEC);
   printf("\n==================================================\n");
 
   return 0;

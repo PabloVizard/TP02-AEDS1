@@ -28,11 +28,12 @@ void Permutacao_Troca(int vetor[], int i, int j)
 
 void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizCidades[NumeroCidades][NumeroCidades])
 {
-	int soma = 0, i = 0, menor = 999999999;
+	int soma = 0, i = 0;
 	if(inf == sup)
-
-	{ soma+=MatrizCidades[pPartida][vetor[0]];
+	{
+		soma+=MatrizCidades[pPartida][vetor[0]];
 		soma+=MatrizCidades[vetor[sup]][pPartida];
+		printf("%d ", pPartida+1);
 		for(i = 0; i <= sup; i++){
 			if(i>0){
 	  		soma +=MatrizCidades[vetor[i-1]][vetor[i]];
@@ -40,10 +41,10 @@ void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizC
 			printf("%d ", vetor[i]+1);
 		}
 
-		printf("\n");
+		//printf("\n");
 
-		printf("soma = %d\n", soma);
-		//printf("menor = %d\n", menor);
+		printf("%d -Distancia %d\n", pPartida+1, soma);
+
 	}
 	else
 	{
@@ -54,6 +55,7 @@ void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizC
 			Permutacao_Troca(vetor, inf, i); // backtracking
 		}
 	}
+
 }
 int Permutacao_SomaMatricula(int *mat1, int *mat2, int *mat3){
   int i=0, soma=0, matricula;
