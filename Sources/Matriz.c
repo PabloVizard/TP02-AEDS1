@@ -29,16 +29,15 @@ void Matriz_Iniciar(int NumeroCidades, int MatrizCidades[NumeroCidades][NumeroCi
 }
 void Matriz_Imprimir(int MatrizCidades[NumeroCidades][NumeroCidades]){
   int i, j;
-  printf("\n==================================================\n");
+  printf("\n====================================================================\n");
   printf("Matriz Cidades");
-  printf("\n==================================================\n\n");
+  printf("\n====================================================================\n\n");
   for(i = 0; i < NumeroCidades; i ++){
     for(j = 0; j < NumeroCidades; j++){
       printf("%.2d ", MatrizCidades[i][j]);
     }
     printf("\n");
   }
-  printf("\n");
 }
 //oid Matriz_Random()
 //{
