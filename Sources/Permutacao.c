@@ -4,7 +4,7 @@
 
 void Permutacao_Iniciar(int NumeroCidades, int pPartida,int MatrizCidades[NumeroCidades][NumeroCidades])
 {
-	int i, cont = 0;
+	int i, cont = 0, menorcaminho = 2147483647;
 	int v[NumeroCidades-1];
 	for(i = 0; i < NumeroCidades-1; i++)
 	{
@@ -15,7 +15,10 @@ void Permutacao_Iniciar(int NumeroCidades, int pPartida,int MatrizCidades[Numero
 			cont ++;
 	}
 	int tam_v = sizeof(v) / sizeof(int);
-  Permutacao_Permuta(v, 0, tam_v - 1, pPartida, MatrizCidades);
+  Permutacao_Permuta(v, 0, tam_v - 1, pPartida, MatrizCidades, &menorcaminho);
+	printf("\n==================================================\n");
+	printf("Menor Caminho = %d", menorcaminho);
+	printf("\n==================================================\n");
 
 }
 
@@ -26,7 +29,7 @@ void Permutacao_Troca(int vetor[], int i, int j)
 	vetor[j] = aux;
 }
 
-void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizCidades[NumeroCidades][NumeroCidades])
+void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizCidades[NumeroCidades][NumeroCidades], int *menor)
 {
 	int soma = 0, i = 0;
 	if(inf == sup)
@@ -40,7 +43,9 @@ void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizC
 			}
 			printf("%d ", vetor[i]+1);
 		}
-
+		if(*menor>soma){
+			*menor = soma;
+		}
 		//printf("\n");
 
 		printf("%d -Distancia %d\n", pPartida+1, soma);
@@ -51,7 +56,7 @@ void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizC
 		for(int i = inf; i <= sup; i++)
 		{
 			Permutacao_Troca(vetor, inf, i);
-			Permutacao_Permuta(vetor, inf + 1, sup, pPartida, MatrizCidades);
+			Permutacao_Permuta(vetor, inf + 1, sup, pPartida, MatrizCidades, menor);
 			Permutacao_Troca(vetor, inf, i); // backtracking
 		}
 	}
@@ -101,6 +106,6 @@ int Permutacao_SomaMatricula(int *mat1, int *mat2, int *mat3){
   for(i = 3; i>=0; i--){
     soma+=mat3[i];
   }
-	
+
 	return soma;
 }
