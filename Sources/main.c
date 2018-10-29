@@ -23,6 +23,7 @@ int main(){
 
   //Nela, está setada a função para calcular a soma das matrículas dos participantes.
   pontoPartida = Permutacao_SomaMatricula(mat1, mat2, mat3);
+
   printf("Numero de cidades:  ");
   scanf("%d", &NumeroCidades);
   printf("\n==================================================\n");

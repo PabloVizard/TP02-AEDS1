@@ -90,7 +90,6 @@ int Permutacao_SomaMatricula(int *mat1, int *mat2, int *mat3){
   }
   i=0;
   //matricula = 0;
-
   for(i = 3; i>=0; i--){
     soma+=mat1[i];
   }
@@ -102,6 +101,6 @@ int Permutacao_SomaMatricula(int *mat1, int *mat2, int *mat3){
   for(i = 3; i>=0; i--){
     soma+=mat3[i];
   }
-
+	
 	return soma;
 }
