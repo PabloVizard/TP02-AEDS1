@@ -16,14 +16,17 @@ int main(){
   //Variável para armazenar o ponto de partida e volta do Caixeiro Viajante.
   int pontoPartida;
   //Variáveis auxiliares para a interrupção dos whiles.
-  int operadorAuxiliar = 1, modoAuxiliar = 1;
+  int modoAuxiliar = 1;
   int intConfirma = 0;
 
   printf("====================================================================\n");
   printf("|                      Seja Bem-vindo(a)!                          |\n");
   printf("====================================================================\n");
   printf("\n");
+
+  //Variavel para saber em qual modo entrar
   int modo;
+  //variavel de confirmação
   char confirma;
 
   while(modoAuxiliar != 0)
@@ -55,12 +58,13 @@ int main(){
       printf("Quantidade de Cidades %d", NumeroCidades);
       printf("\n====================================================================\n");
 
+      // Matriz Cidades
       int MatrizCidades[NumeroCidades][NumeroCidades];
 
       //Definindo o ponto de partida pelo resto de divisão da soma pelo número de cidades.
       pontoPartida = (pontoPartida%NumeroCidades);
       printf("\n====================================================================\n");
-      printf("Cidade Inicial %d", pontoPartida+1);
+      printf("Cidade Inicial %d", pontoPartida);
       printf("\n====================================================================\n");
       //Iniciando a matriz
       Matriz_Iniciar(NumeroCidades, MatrizCidades);
@@ -104,21 +108,23 @@ int main(){
           printf("Matricula 03 = %d", matricula3);
           printf("\n====================================================================\n");
 
+          //Definindo o ponto de partida pelo resto de divisão da soma pelo número de cidades.
           partidaInicial = Permutacao_SomaMatricula(mat1, mat2, mat3, matricula1, matricula2, matricula3);
+          partidaInicial = (partidaInicial%NumeroCidades);
 
           fscanf(arq, "%d", &NumeroCidades);
           printf("\n====================================================================\n");
           printf("Quantidade de Cidades %d", NumeroCidades);
           printf("\n====================================================================\n");
 
+          // Matriz Cidades
           int MatrizCidades[NumeroCidades][NumeroCidades];
 
-          partidaInicial = (partidaInicial%NumeroCidades);
-
           printf("\n====================================================================\n");
-          printf("Cidade Inicial %d", partidaInicial+1);
+          printf("Cidade Inicial %d", partidaInicial);
           printf("\n====================================================================\n");
 
+          // Lendo a matriz do arquivo
           for(i=0; i<NumeroCidades; i++){
             for(j=0; j<NumeroCidades; j++){
               if(i == j){
@@ -136,7 +142,7 @@ int main(){
         }
 
         printf("\n====================================================================\n");
-        printf("          >>>>>>>>>> Tempo de Execução:%f <<<<<<<<<<",(clock() - tempo2) / (double)CLOCKS_PER_SEC);
+        printf("          #######--> Tempo de Execução:%f <--#######",(clock() - tempo2) / (double)CLOCKS_PER_SEC);
         printf("\n====================================================================\n");
 
     }
@@ -145,9 +151,12 @@ int main(){
         Menu_Confirmacao();
         scanf(" %c", &confirma);
         printf("\n");
+
+        //Transformando o char confirma em int
         confirma = toupper(confirma);
         intConfirma = confirma -64;
-        if(intConfirma == 19)
+
+        if(intConfirma == 19) // "S" em numeros inteiros é o numero 19
         {
           Menu_Saida();
           modoAuxiliar = 0;

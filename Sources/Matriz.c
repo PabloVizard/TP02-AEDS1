@@ -12,6 +12,7 @@ void Matriz_Iniciar(int NumeroCidades, int MatrizCidades[NumeroCidades][NumeroCi
 
   srand(time(NULL)); //Utilizamos esse comando para podermos usar numeros aleatorios para a distancia entre as cidades
 
+  //Percorrer a matriz adicionando um numero aleatorio quando i for diferente de j e adicionar 0 quando i for igual a j
   for(i = 0; i < NumeroCidades; i++)
   {
     for(j = 0; j < NumeroCidades; j++)
@@ -27,8 +28,11 @@ void Matriz_Iniciar(int NumeroCidades, int MatrizCidades[NumeroCidades][NumeroCi
     }
   }
 }
+
 void Matriz_Imprimir(int MatrizCidades[NumeroCidades][NumeroCidades]){
   int i, j;
+
+  //Printar a matriz completa
   printf("\n====================================================================\n");
   printf("Matriz Cidades");
   printf("\n====================================================================\n\n");
@@ -39,7 +43,3 @@ void Matriz_Imprimir(int MatrizCidades[NumeroCidades][NumeroCidades]){
     printf("\n");
   }
 }
-//oid Matriz_Random()
-//{
-
-//}

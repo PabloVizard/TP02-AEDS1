@@ -4,27 +4,37 @@
 
 void Permutacao_Iniciar(int NumeroCidades, int pPartida,int MatrizCidades[NumeroCidades][NumeroCidades])
 {
-	int i, cont = 0, menorcaminho = 2147483647;
+	int i, cont = 0, menorcaminho = 2147483647; // variavel menorcaminho com o maior numero int para poder pegar o menorcaminho
+
+	// Vetor com n-1 para não ter a cidade inicial
 	int v[NumeroCidades-1];
+
+	//vetor para armazenar o caminho com a menor distancia
+	int caminhoMenor[NumeroCidades];
+
+	// Gerar um vetor sem a cidade inicial
 	for(i = 0; i < NumeroCidades-1; i++)
 	{
-		if(i ==pPartida){
+		if(i == pPartida){
 			cont ++;
 		}
 			v[i] = cont;
 			cont ++;
 	}
+
 	int tam_v = sizeof(v) / sizeof(int);
-	int caminhoMenor[NumeroCidades];
-  Permutacao_Permuta(v, 0, tam_v - 1, pPartida, MatrizCidades, &menorcaminho, NumeroCidades, caminhoMenor);
+
+	Permutacao_Permuta(v, 0, tam_v - 1, pPartida, MatrizCidades, &menorcaminho, NumeroCidades, caminhoMenor);
+	printf("--------------------------------------------------------------------\n");
 	printf("\n====================================================================\n");
 	printf("Caminho com a menor distancia = ");
-	printf("%d ", pPartida+1);
+	printf("%d ", pPartida);
+
 	for(i = 0; i < NumeroCidades-1; i++)
 	{
-		printf("%d ", caminhoMenor[i]+1);
+		printf("%d ", caminhoMenor[i]);
 	}
-	printf("%d", pPartida+1);
+	printf("%d", pPartida);
 	printf("\n====================================================================");
 
 	printf("\n====================================================================\n");
@@ -44,16 +54,20 @@ void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizC
 	int soma = 0, i = 0;
 	if(inf == sup)
 	{
-		soma+=MatrizCidades[pPartida][vetor[0]];
-		soma+=MatrizCidades[vetor[sup]][pPartida];
-		printf("%d ", pPartida+1);
+		soma+=MatrizCidades[pPartida][vetor[0]]; //Somar a cidade inicial com a primeira cidade
+		soma+=MatrizCidades[vetor[sup]][pPartida]; //Somar a ultima com a cidade inicial
+
+		printf("--------------------------------------------------------------------\n");
+		printf("%d ", pPartida);
 
 		for(i = 0; i <= sup; i++){
 			if(i>0){
-	  		soma +=MatrizCidades[vetor[i-1]][vetor[i]];
+	  		soma +=MatrizCidades[vetor[i-1]][vetor[i]]; //Somar os caminhos
 			}
-			printf("%d ", vetor[i]+1);
+			printf("%d ", vetor[i]);
 		}
+
+		// compara o numero menor anterior com o atual
 		if(*menor>soma){
 			*menor = soma;
 			for(i = 0; i < NumeroCidades; i++)
@@ -61,9 +75,8 @@ void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizC
 				caminhoMenor[i] = vetor[i];
 			}
 		}
-		//printf("\n");
 
-		printf("%d -Distancia %d\n", pPartida+1, soma);
+		printf("%d - Distancia = %d\n", pPartida, soma);
 
 	}
 	else
@@ -80,6 +93,7 @@ void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizC
 int Permutacao_SomaMatricula(int *mat1, int *mat2, int *mat3, int matricula1, int matricula2, int matricula3){
 	int i=0, soma=0;
 
+	//Pegar os numeros absolutos de cada matricula
   while(matricula1>0){
     mat1[i] = matricula1%10;
     i++;
@@ -87,6 +101,7 @@ int Permutacao_SomaMatricula(int *mat1, int *mat2, int *mat3, int matricula1, in
   }
   i=0;
 
+	//Pegar os numeros absolutos de cada matricula
   while(matricula2>0){
     mat2[i] = matricula2%10;
     i++;
@@ -94,24 +109,28 @@ int Permutacao_SomaMatricula(int *mat1, int *mat2, int *mat3, int matricula1, in
   }
   i=0;
 
+	//Pegar os numeros absolutos de cada matricula
   while(matricula3>0){
     mat3[i] = matricula3%10;
     i++;
     matricula3=matricula3/10;
   }
   i=0;
-  //matricula = 0;
+
+  //Somar os numeros da matricula que adiquirimos anteriormente
   for(i = 3; i>=0; i--){
     soma+=mat1[i];
   }
 
+	//Somar os numeros da matricula que adiquirimos anteriormente
   for(i = 3; i>=0; i--){
     soma+=mat2[i];
   }
 
+	//Somar os numeros da matricula que adiquirimos anteriormente
   for(i = 3; i>=0; i--){
     soma+=mat3[i];
   }
 
-	return soma;
+	return soma; //retornar a soma
 }
