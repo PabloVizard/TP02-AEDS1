@@ -19,7 +19,7 @@ void Matriz_Iniciar(int NumeroCidades, int MatrizCidades[NumeroCidades][NumeroCi
     {
       if (i!=j)
       {
-        MatrizCidades[i][j] = (rand()%99);
+        MatrizCidades[i][j] = (rand()%100)+1;
       }
       else
       {
@@ -38,7 +38,7 @@ void Matriz_Imprimir(int MatrizCidades[NumeroCidades][NumeroCidades]){
   printf("\n====================================================================\n\n");
   for(i = 0; i < NumeroCidades; i ++){
     for(j = 0; j < NumeroCidades; j++){
-      printf("%.2d ", MatrizCidades[i][j]);
+      printf("% .2d ", MatrizCidades[i][j]);
     }
     printf("\n");
   }

@@ -36,10 +36,6 @@ int main(){
 
     if(modo == 1)
     {
-      //Algoritmo para medir o tempo de execução do programa interativo
-      clock_t tempo;
-      tempo = clock();
-
       //Receber os numeros de matricula
       printf("Matrícula do primeiro integrante: ");
       scanf("%d", &matricula1);
@@ -54,6 +50,11 @@ int main(){
 
       printf("Numero de cidades: ");
       scanf("%d", &NumeroCidades);
+
+      //Algoritmo para medir o tempo de execução do programa interativo
+      clock_t tempo;
+      tempo = clock();
+
       printf("\n====================================================================\n");
       printf("Quantidade de Cidades %d", NumeroCidades);
       printf("\n====================================================================\n");
@@ -75,7 +76,7 @@ int main(){
       Matriz_Imprimir(MatrizCidades);
 
       printf("\n====================================================================\n");
-      printf("          >>>>>>>>>> Tempo de Execução:%f <<<<<<<<<<",(clock() - tempo) / (double)CLOCKS_PER_SEC);
+      printf("          >>>>>>>>>> Tempo de Execução: %f s <<<<<<<<<<",(clock() - tempo) / (double)CLOCKS_PER_SEC);
       printf("\n====================================================================\n\n");
 
 
@@ -83,15 +84,16 @@ int main(){
 
     else if(modo == 2)
     {
-      //Algoritmo para medir o tempo de execução do programa por arquivo
-      clock_t tempo2;
-      tempo2 = clock();
-
       char nomeArquivo[50];
       int i, j, partidaInicial;
       FILE *arq;
       printf("Entre com o nome do arquivo que você deseja ler: \n");
       scanf("%s", nomeArquivo);
+
+      //Algoritmo para medir o tempo de execução do programa por arquivo
+      clock_t tempo2;
+      tempo2 = clock();
+
       arq = fopen(nomeArquivo, "r"); //Abertura do arquivo
         if(arq == NULL){
           printf("O arquivo digitado não foi encontrado.\n");
@@ -108,14 +110,14 @@ int main(){
           printf("Matricula 03 = %d", matricula3);
           printf("\n====================================================================\n");
 
-          //Definindo o ponto de partida pelo resto de divisão da soma pelo número de cidades.
-          partidaInicial = Permutacao_SomaMatricula(mat1, mat2, mat3, matricula1, matricula2, matricula3);
-          partidaInicial = (partidaInicial%NumeroCidades);
-
           fscanf(arq, "%d", &NumeroCidades);
           printf("\n====================================================================\n");
           printf("Quantidade de Cidades %d", NumeroCidades);
           printf("\n====================================================================\n");
+
+          //Definindo o ponto de partida pelo resto de divisão da soma pelo número de cidades.
+          partidaInicial = Permutacao_SomaMatricula(mat1, mat2, mat3, matricula1, matricula2, matricula3);
+          partidaInicial = (partidaInicial%NumeroCidades);
 
           // Matriz Cidades
           int MatrizCidades[NumeroCidades][NumeroCidades];
@@ -142,7 +144,7 @@ int main(){
         }
 
         printf("\n====================================================================\n");
-        printf("          #######--> Tempo de Execução:%f <--#######",(clock() - tempo2) / (double)CLOCKS_PER_SEC);
+        printf("          #######--> Tempo de Execução: %f s <--#######",(clock() - tempo2) / (double)CLOCKS_PER_SEC);
         printf("\n====================================================================\n");
 
     }
