@@ -89,6 +89,9 @@ void Permutacao_Permuta(int vetor[], int inf, int sup, int pPartida, int MatrizC
 		}
 	}
 
+	if(*menor == 2147483647)
+			*menor = 0;
+
 }
 int Permutacao_SomaMatricula(int *mat1, int *mat2, int *mat3, int matricula1, int matricula2, int matricula3){
 	int i=0, soma=0;
