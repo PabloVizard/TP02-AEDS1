@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
 #include <time.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/time.h>
 #include "../Libs/Permutacao.h"
 #include "../Libs/Matriz.h"
 #include "../Libs/Menu.h"
+#define GET_MS(ini, fim)  ((fim.tv_sec * 1000000 + fim.tv_usec) \
+      - (ini.tv_sec * 1000000 + ini.tv_usec))
 
 int main(){
   //Vetores para armazenar as matrículas
@@ -52,8 +54,11 @@ int main(){
       scanf("%d", &NumeroCidades);
 
       //Algoritmo para medir o tempo de execução do programa interativo
-      clock_t tempo;
-      tempo = clock();
+
+
+      struct timeval inicio, fim;
+
+      gettimeofday(&inicio, NULL);
 
       printf("\n====================================================================\n");
       printf("Quantidade de Cidades %d", NumeroCidades);
@@ -75,9 +80,11 @@ int main(){
       //imprimindo a matriz
       Matriz_Imprimir(MatrizCidades);
 
+      gettimeofday(&fim, NULL);
+
       printf("\n====================================================================\n");
-      printf("          >>>>>>>>>> Tempo de Execução: %f s <<<<<<<<<<",(clock() - tempo) / (double)CLOCKS_PER_SEC);
-      printf("\n====================================================================\n\n");
+      printf("          #######--> Tempo de Execução: %.5f s <--#######", (float)GET_MS(inicio, fim)/1000000);
+      printf("\n====================================================================\n");
 
 
     }
@@ -91,8 +98,8 @@ int main(){
       scanf("%s", nomeArquivo);
 
       //Algoritmo para medir o tempo de execução do programa por arquivo
-      clock_t tempo2;
-      tempo2 = clock();
+      struct timeval inicio, fim;
+      gettimeofday(&inicio, NULL);
 
       arq = fopen(nomeArquivo, "r"); //Abertura do arquivo
         if(arq == NULL){
@@ -143,8 +150,9 @@ int main(){
           Matriz_Imprimir(MatrizCidades);
         }
 
+        gettimeofday(&fim, NULL);
         printf("\n====================================================================\n");
-        printf("          #######--> Tempo de Execução: %f s <--#######",(clock() - tempo2) / (double)CLOCKS_PER_SEC);
+        printf("          #######--> Tempo de Execução: %.5f s <--#######", (float)GET_MS(inicio, fim)/1000000);
         printf("\n====================================================================\n");
 
     }
