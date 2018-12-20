@@ -83,7 +83,7 @@ int main(){
       gettimeofday(&fim, NULL);
 
       printf("\n====================================================================\n");
-      printf("          #######--> Tempo de Execução: %.4f s <--#######", (float)GET_MS(inicio, fim)/1000000);
+      printf("          #######--> Tempo de Execução: %.5f s <--#######", (float)GET_MS(inicio, fim)/1000000);
       printf("\n====================================================================\n");
 
 

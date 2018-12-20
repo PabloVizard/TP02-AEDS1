@@ -19,7 +19,7 @@ void Matriz_Iniciar(int NumeroCidades, int MatrizCidades[NumeroCidades][NumeroCi
     {
       if (i!=j)
       {
-        MatrizCidades[i][j] = (rand()%100)+1;
+        MatrizCidades[i][j] = (rand()%99)+1;
       }
       else
       {
